@@ -16,7 +16,8 @@ using namespace std;
 string retrieve_cipher(string publickey, string data);
 public int solve(int n, int m);
 public string getknapsack(string key, string n, string m);
-
+void cli();
+void encrypt();
 
 int main()
 {
@@ -96,6 +97,68 @@ string retrieve_public_key=getknapsack(priv, n,m);
       int solution = solve(Convert.ToInt32(n), Convert.ToInt32(mod));
       string plain = getknapsack(ci, Convert.ToString(solution), mod);
 		
+}
+void cli ()
+{
+	int x ;
+	cout<<"Welcome to the knapsack decoder\n what would you like to do? \n 1) Encrypt \n 2) Decrypt\n(Enter 1 or 2):"
+	cin>>x;
+	while(x!=1 && x!=2)
+	{
+		cout<<"\nPlease enter a valid option (1 or 2):";
+		cin>>x;
+	}
+	if(x==1)
+		encrypt();
+	else
+		decrypt();
+	
+}
+
+void encrypt()
+{
+	vector<int> pss; //store private super increasing sequence.
+	int counter = 0;
+	string option;
+	cout<<"would you like to import your super increasing sequence from a file (y/n) ?"
+	cin>>option;
+	if(option == 'y')
+	{
+		
+		cout<<"Enter file name (make sure you delimt the values by either a ', newline or space'";
+		cin>>option;
+		ifstream f;
+		vector<int> E;
+		f.open(option, ios::in);
+		assert(f.is_open());
+		string line, delimiter = ", \n", word;
+		while (getline(f, line))
+		{
+			word = line.substr(0, line.find(delimiter));
+			line.erase(0, line.find(delimiter) + delimiter.length());
+			numb = stoi(word);
+			E.push_back(numb);
+		}
+		f.close();
+	}
+	else
+	{
+		cout<<"Enter your private super increasing sequence enter a -1 to stop\n";
+		while(counter != -1)
+		{
+			cin>>counter;
+			E.push_back(counter);
+		}
+	}
+	
+	cout<<"enter the a valid modulus (m > 2a0)\n";
+	cin>>modulus;
+	cout<<"enter a valid multipler { gcd( multipler, modulus) == 1) } \n";
+	cin>> multipler;
+	
+	vector <int> pes //public encrypting sequence will be generated;
+	
+
 }
 
 
