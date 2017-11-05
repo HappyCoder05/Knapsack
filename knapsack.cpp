@@ -21,28 +21,7 @@ void encrypt();
 
 int main()
 {
-
-	ifstream f;
-	vector<int> E;
-	f.open("messages.txt", ios::in);
-	assert(f.is_open());
-	string line, delimiter = ",", word;
-	int numb, mod, multiplier;
-	cout<<"enter the mod: \n\n";
-	cin>> mod;
-	cout<<"enter the multiplier";
-	cin>>multiplier;
-	int mod = 
-	while (getline(f, line))
-	{
-
-		word = line.substr(0, line.find(delimiter));
-		line.erase(0, line.find(delimiter) + delimiter.length());
-		numb = stoi(word);
-		E.push_back(numb);
-	}
-	f.close();
-	vector<int>  results;
+	void cli();
 	int long ans;
 	for (int i = 0; i < E.size(); i++)
 	{
